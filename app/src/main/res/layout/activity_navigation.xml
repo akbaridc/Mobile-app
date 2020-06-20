@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".JavaNavigation"
+    >
+    <FrameLayout
+        android:id="@+id/Frame_Home"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottomNavView"
+        >
+    </FrameLayout>
+<!--    <FrameLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:id="@+id/container_home"-->
+<!--        android:background="#FDA6C2">-->
+<!--    </FrameLayout>-->
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="?attr/colorPrimary"
+        android:layout_alignParentBottom="true"
+        app:itemRippleColor="@android:color/background_dark"
+        app:labelVisibilityMode="labeled"
+        app:itemTextAppearanceActive="@color/colorPrimaryDark"
+        android:textAlignment="center"
+
+        app:itemTextColor="@color/cardview_light_background"
+        app:itemIconTint="@color/cardview_light_background"/>
+<!--    <com.luseen.spacenavigation.SpaceNavigationView-->
+<!--        android:id="@+id/space"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:gravity="bottom"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        app:active_item_color="@color/colorPrimary"-->
+<!--        app:centre_button_color="@color/colorPrimary"-->
+<!--        app:inactive_item_color="#000000"-->
+<!--        app:space_background_color="@color/space_white"-->
+<!--        app:centre_button_icon="@drawable/ic_add_circle_outline_black_24dp"-->
+<!--        app:space_item_icon_size="40dp"-->
+<!--        app:space_item_icon_only_size="@dimen/space_item_icon_only_size"-->
+<!--        />-->
+
+</RelativeLayout>
