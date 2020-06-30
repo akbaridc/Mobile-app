@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".akun.activity_registrasi"
     android:orientation="vertical"
-    android:paddingTop="10dp">
-
+    android:paddingTop="10dp"
+    android:paddingBottom="20dp">
     <ScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
     <ImageView
         android:id="@+id/logo"
         android:layout_width="100dp"
@@ -36,24 +39,7 @@
         android:paddingTop="20dp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"/>
-<!--    <EditText-->
-<!--        android:id="@+id/idhiden"-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="0dp"-->
-<!--        android:drawableLeft="@drawable/ic_person_outline"-->
-<!--        android:hint="Nama Lengkap"-->
-<!--        android:paddingTop="20dp"-->
-<!--        android:visibility="invisible"/>-->
 
-
-    <EditText
-        android:id="@+id/eTxtUsername"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:drawableLeft="@drawable/ic_person_outline"
-        android:hint="Username"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"/>
     <EditText
         android:id="@+id/eTxtjk"
         android:layout_width="match_parent"
@@ -62,7 +48,32 @@
         android:hint="Jenis Kelamin"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"/>
+    <EditText
+        android:id="@+id/eTxtAlamat"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:drawableLeft="@drawable/ic_person_outline"
+        android:hint="Alamat"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"/>
 
+    <EditText
+        android:id="@+id/eTxtTempatLahir"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:drawableLeft="@drawable/ic_person_outline"
+        android:hint="Tempat lahir"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"/>
+
+    <EditText
+        android:id="@+id/eTxtTelepon"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:drawableLeft="@drawable/ic_phone"
+        android:hint="No telepon"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"/>
 <!--    <EditText-->
 <!--        android:id="@+id/eTxtTelepon"-->
 <!--        android:layout_width="match_parent"-->
@@ -80,14 +91,27 @@
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"/>
     <EditText
+        android:id="@+id/eTxtUsername"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:drawableLeft="@drawable/ic_person_outline"
+        android:hint="Username"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"/>
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:passwordToggleEnabled="true"
+            android:drawableLeft="@drawable/ic_lock_outline">
+    <EditText
         android:id="@+id/eTxtPassword"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:drawableLeft="@drawable/ic_lock_outline"
+
         android:hint="Password"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"/>
-
+        </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/btn_daftar"
@@ -122,5 +146,6 @@
             android:layout_marginLeft="180dp"
             android:layout_marginRight="140dp"/>
     </LinearLayout>
-
-</LinearLayout>
+    </LinearLayout>
+    </ScrollView>
+</RelativeLayout>
