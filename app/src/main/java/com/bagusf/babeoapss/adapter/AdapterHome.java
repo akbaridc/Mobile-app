@@ -46,7 +46,7 @@ public class AdapterHome extends RecyclerView.Adapter<AdapterHome.holder> {
 
     @Override
     public void onBindViewHolder(@NonNull holder holder, int position) {
-        Glide.with(context).load("http://192.168.1.12/API/api_babeo/asset/foto_produk/"+arrayList.get(position).getFoto())
+        Glide.with(context).load("http://babeo.mif-project.com/asset/foto_produk/"+arrayList.get(position).getFoto())
                 .thumbnail(0.2f)
                 .fitCenter()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
@@ -62,9 +62,9 @@ public class AdapterHome extends RecyclerView.Adapter<AdapterHome.holder> {
                 intent.putExtra("foto", arrayList.get(position).getFoto());
                 intent.putExtra("harga", arrayList.get(position).getHarga());
                 intent.putExtra("id_produk", arrayList.get(position).getId());
+                intent.putExtra("id_penjual", arrayList.get(position).getId_reseller());
+
                 context.startActivity(intent);
-
-
             }
         });
     }
