@@ -2,7 +2,20 @@ package com.bagusf.babeoapss.model;
 
 public class ModelHome {
 
-    String nama, harga,foto,id;
+    String nama;
+    String harga;
+    String foto;
+    String id;
+
+    public String getId_reseller() {
+        return id_reseller;
+    }
+
+    public void setId_reseller(String id_reseller) {
+        this.id_reseller = id_reseller;
+    }
+
+    String id_reseller;
 
     public String getNama() {
         return nama;
