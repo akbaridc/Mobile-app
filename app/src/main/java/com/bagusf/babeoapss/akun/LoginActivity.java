@@ -3,6 +3,7 @@ package com.bagusf.babeoapss.akun;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -18,16 +19,22 @@ import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.bagusf.babeoapss.JavaNavigation;
 import com.bagusf.babeoapss.R;
+import com.bagusf.babeoapss.utils.SessionManager;
+import com.bagusf.babeoapss.utils.shared_pref;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+
+import static com.bagusf.babeoapss.utils.network.URL_LOGIN;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText username, pass;
     private Button btn_login;
     private TextView link_regist;
     private ProgressBar progressBar;
+    private SessionManager sessionManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +43,13 @@ public class LoginActivity extends AppCompatActivity {
         username = findViewById(R.id.eTxtUsername);
         pass = findViewById(R.id.eTxtPassword);
         btn_login = findViewById(R.id.btn_login);
+        sessionManager = new SessionManager(this);
+        if (sessionManager.isLoggedIn()){
+            startActivity(new Intent(LoginActivity.this, JavaNavigation.class)
+                    .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
+            finish();
+        }
+
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -50,11 +64,9 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
     }
     public void aksiButton(){
-       AndroidNetworking.post("http://192.168.102.106/API/api_babeo/auth/login")
+       AndroidNetworking.post(URL_LOGIN)
                .addBodyParameter("username", username.getText().toString())
                .addBodyParameter("password", pass.getText().toString())
                .setTag(this)
@@ -66,13 +78,22 @@ public class LoginActivity extends AppCompatActivity {
                        try{
                            String status = response.getString("result");
                            String message = response.getString("message");
+                           Log.i("respon", "onResponse: " + status);
+
+
                            if(status.equals("true")){
 
                                Log.d("username",response.getString("username"));
                                Log.d("f",response.getString("username"));
                                showMessage(message);
+                               String username  = response.getString("username");
+                               String id = response.getString("id_konsumen");
+                               sessionManager.setUsername(username);
+                               sessionManager.setLogin();
+                               sessionManager.setIduser(id);
                                Intent intent = new Intent(LoginActivity.this, JavaNavigation.class);
                                startActivity(intent);
+                               finish();
                            }else {
                                showMessage(message);
 
@@ -85,7 +106,7 @@ public class LoginActivity extends AppCompatActivity {
 
                    @Override
                    public void onError(ANError anError) {
-
+                       Log.e("LOGIN", "onError: " + anError.getErrorDetail());
                    }
                });
 
