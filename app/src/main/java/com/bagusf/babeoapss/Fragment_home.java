@@ -44,7 +44,7 @@ public class Fragment_home extends Fragment {
         ButterKnife.bind(this,view);
         AndroidNetworking.initialize(getActivity());
 
-        GridLayoutManager manager = new GridLayoutManager(getActivity(), 3, LinearLayoutManager.VERTICAL, false);
+        GridLayoutManager manager = new GridLayoutManager(getActivity(), 2, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(manager);
         recyclerView.setHasFixedSize(true);
         init();
@@ -58,7 +58,6 @@ public class Fragment_home extends Fragment {
 
     public void init() {
         arrayList.clear();
-
         AndroidNetworking.post(URL_GETPRODUK)
                 .setPriority(Priority.HIGH)
                 .build()
@@ -72,6 +71,7 @@ public class Fragment_home extends Fragment {
                                 ModelHome modelHome= new ModelHome();
                                 modelHome.setFoto(jsonObject.getString("gambar"));
                                 modelHome.setNama(jsonObject.getString("nama_produk"));
+                                modelHome.setId_reseller(jsonObject.getString("id_reseller"));
                                 modelHome.setHarga(jsonObject.getString("harga"));
                                 modelHome.setId(jsonObject.getString("id_produk"));
                                 arrayList.add(modelHome);
